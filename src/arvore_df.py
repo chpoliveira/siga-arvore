@@ -305,7 +305,6 @@ function cartao(n,qi,escolhas,aoEscolher,aoSel,ativo){const c=el("div","card"+(n
  return c}
 function tra(rolar){const t=$("trilha");t.textContent="";const p=caminho(esc,D.inicio);let qi=0;
  if(sel==null||sel>=p.length)sel=p.length-1;
- const sid=p[sel];
  p.forEach((id,i)=>{const n=N[id];const r=el("div","passo"+(i===sel?" cur":"")),e=el("div","eixo");e.append(el("span","pino"));if(i<p.length-1)e.append(el("span","fio"));
   const idx=i,q=qi;const c=cartao(n,q,esc,(qq,k)=>{esc=esc.slice(0,qq);esc[qq]=k;const np=caminho(esc,D.inicio);sel=np.length-1;for(let j=idx+1;j<np.length;j++){if(temDet(N[np[j]])){sel=j;break}}tra(true)},()=>{sel=idx;tra(false);if(innerWidth<=860)$("painel").scrollIntoView({behavior:"smooth",block:"start"})},i===sel);
   if(n.tipo==="pergunta")qi++;r.append(e,c);t.append(r)});
